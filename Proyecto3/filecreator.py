@@ -94,6 +94,7 @@ def create_file(final, dfas, parse_line,title):
     output.write("        else:\n")
     output.write("            i+=1\n")
     output.write("    for token in tokens:\n")
+    output.write("        # print(token)\n")
     output.write("        true_list.append(token)\n")
     output.write("        if token.value == ';':\n")
     output.write("            # Aqui se le pasan los tokens al parser\n")

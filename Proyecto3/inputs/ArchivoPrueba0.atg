@@ -29,7 +29,7 @@ Expresion<resultado> =					(.resultado1, resultado2 = 0,0.)
 	}															(.resultado = resultado1.)
 	.
 
-Termino <resultado> =					(.resultado1, resultado2 = 0,0.)
+Termino<resultado> =					(.resultado1, resultado2 = 0,0.)
 	Factor<resultado1>
 	{		"*"Factor<resultado2>			(.resultado1 *= resultado2.)  (.print("Factor: " + str(resultado1)).)
 	}											(.resultado = resultado1.)
