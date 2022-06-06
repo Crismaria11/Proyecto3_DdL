@@ -1,0 +1,42 @@
+
+COMPILER ArchivoPruebaMio
+
+CHARACTERS
+
+letra = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz".
+digito = "0123456789".
+
+KEYWORDS
+
+
+TOKENS
+
+ident = letra{letra|digito} EXCEPT KEYWORDS.
+numero = digito{digito}.
+
+PRODUCTIONS
+
+EstadoInicial= {Instruccion (";")}".".
+
+Instruccion = 					(.resultado = 0.)
+	Expresion<resultado>		(.print(str(resultado)).)
+	.
+
+Expresion<resultado> =		(.resultado1, resultado2 = 0, 0.)
+	Termino<resultado1>
+	{    "+"Termino<resultado2>		(.resultado1+=resultado2.)
+	}							(.resultado=resultado1.)
+	.
+
+Termino<resultado>=				(.resultado1, resultado2 =  0,0.)
+	Factor<resultado1>
+	{    "*"Factor<resultado2>	(.resultado1*=resultado2.)
+	}							(.resultado=resultado1.)
+	.
+
+Factor<resultado> =	(.signo=1.)
+	( Number<resultado> | "(" Expresion<resultado> ")") (.resultado*=signo.)
+	.
+
+Number<resultado> =  numero (.resultado = int(self.last_token.value).) .
+END ArchivoPruebaMio
